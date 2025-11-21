@@ -73,3 +73,74 @@ You're tasked with 7 tickets this sprint. 5 of the tickets are enhancements, one
 ### Expectations and notes
 
 We're not expecting something that's highly polished and production ready. The purpose here is to see if you can meet the goals outlined and to evaluate the choices you've made to achieve those goals. To that end, feel free to use AI to **explain** sections of code to you, but don't use it to actually write the code. It's important that you understand what's going on in the code and can explain your choices.
+
+
+
+🚀 How to Run This Project
+
+1️⃣ Install Dependencies
+
+Make sure Node.js ≥ 20 OR ≥ 22.
+
+npm install
+
+
+⸻
+
+2️⃣ Start the GraphQL Server
+
+npm start
+
+Server starts at:
+
+👉 http://localhost:4000/graphql
+
+⸻
+
+3️⃣ Required Headers
+
+Every request MUST include:
+
+client: test-client
+
+Example curl:
+
+curl -H "client: myapp" \
+-d '{"query":"{ address(username:\"jack\"){city} }"}' \
+http://localhost:4000/graphql
+
+
+⸻
+
+📘 GraphQL API
+
+Query
+
+address(username: String!): Address
+
+Mutation
+
+createAddress(username: String!, address: AddressInput!): Address!
+
+Address Types
+
+type Address {
+street: String!
+city: String!
+state: String!
+zipcode: String!
+}
+
+
+⸻
+
+🧪 Running Tests (Ticket 7)
+
+npm test
+
+Tests include:
+•	Query success/failure
+•	Mutation success/failure
+•	Required header validation
+•	Response metadata
+•	Logger binding
